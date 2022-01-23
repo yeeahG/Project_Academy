@@ -18,10 +18,10 @@ public class EndView {
 			}
 		} else {
 			System.out.println("현재 개설된 강의가 없습니다");
-
 		}
 	}
 
+	
 	// 강의 이름 받아서 출력
 	public static void lectureListView(Object lecture) {
 		if (lecture != null) {
@@ -31,6 +31,7 @@ public class EndView {
 		}
 	}
 
+	
 	//수강생 출력
 	public static void lectureStudentView(Lecture lecture) {
 		if (lecture.getStudent() != null) {
@@ -38,21 +39,21 @@ public class EndView {
 		} else {
 			System.out.println("해당 강의의 학생은 존재하지 않습니다");
 		}
-
 	}
+	
 	
 	
 	public static void succesView(String message) {
 		System.out.println(message);
 	}
 
+	
 	public static void lectureTeacherView(Lecture lecture) {
 		if (lecture.getTeacher() != null) {
 			System.out.println(lecture.getTeacher());
 		} else {
 			System.out.println("해당 강사가 존재하지 않습니다.");
 		}
-		
 	}
 
 }
