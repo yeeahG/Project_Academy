@@ -9,7 +9,7 @@ import model.dto.Teacher;
 public class StartView {
 	public static void main(String[] args) {
 		
-		//강사- 번호, 이름, 연락처, 이메일, 전공, 경력
+		//강사 - 번호, 이름, 연락처, 이메일, 전공, 경력
 		Teacher teacher1 = new Teacher(1, "김종원", "010-1111-2222", "jongwon@playdata.com", "영어", 5);
 		Teacher teacher2 = new Teacher(2, "윤지원", "010-3333-2322", "jiwon@playdata.com", "중국어", 6);
 		Teacher teacher3 = new Teacher(3, "김예지", "010-9877-6544", "yeji@playdata.com", "일본어", 3);
