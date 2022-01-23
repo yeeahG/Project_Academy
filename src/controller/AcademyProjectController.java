@@ -19,7 +19,7 @@ public class AcademyProjectController {
 		return instance;
 	}
 	
-	//강의 저장
+	//강의 개설
 	public void lectureInsert(Lecture lecture) {
 		if(lecture != null) {
 			try {
