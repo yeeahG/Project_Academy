@@ -24,20 +24,28 @@ public class AcademyProjectService {
 		return lectureList;
 	}
 	
-	
 	//강의 생성
 	public void lectureInsert(Lecture lecture) throws LectureNameDuplicationException {
-		for(Lecture l : lectureList) {
-			if(l.getLectureName().equals(lecture.getLectureName())) {
-				throw new LectureNameDuplicationException("이미 존재하는 강의입니다.");
-			}
+
+		boolean anyMatch = lectureList.stream().anyMatch(l -> l.getLectureName().equals(lecture.getLectureName()));
+		
+		if (anyMatch) {
+			throw new LectureNameDuplicationException("이미 존재하는 강의입니다.");
+		} else {
+			lectureList.add(lecture);
 		}
-		lectureList.add(lecture);
+		
+//		for(Lecture l : lectureList) {
+//			if(l.getLectureName().equals(lecture.getLectureName())) {
+//				throw new LectureNameDuplicationException("이미 존재하는 강의입니다.");
+//			}
+//		}
+//		lectureList.add(lecture);		
 	}
-	
 	
 	//강의 정보 검색
 	public Lecture getLecture(String lectureName) throws LectureNotFoundException {
+		
 		for(Lecture l : lectureList) {
 			if(l.getLectureName().equals(lectureName)) {
 				return l;
@@ -46,7 +54,7 @@ public class AcademyProjectService {
 		throw new LectureNotFoundException("요청하신 강의는 존재하지 않습니다");
 	}
 	
-	
+
 	//강의 이름으로 수강생 출력
 	public Lecture getLectureStudent(String lectureName) throws LectureNotFoundException {
 		for(Lecture l : lectureList) {
@@ -56,7 +64,6 @@ public class AcademyProjectService {
 		}
 		throw new LectureNotFoundException("요청하신 강의는 존재하지 않습니다");
 	}
-	
 	
 	//강의 개강 날짜 변경 및 검색
 	public boolean lectureDateUpdate(String lectureName, String information) {
@@ -69,7 +76,6 @@ public class AcademyProjectService {
 		return false;
 	}
 	
-	
 	//강사 정보 변경 및 검색
 	public boolean lectureTeacherUpdate(String lectureName, Teacher teacher) {
 		for(Lecture l : lectureList) {
@@ -80,7 +86,6 @@ public class AcademyProjectService {
 		}
 		return false;
 	}
-	
 	
 	//수강생 목록 수정
 	public boolean lectureStudentUpdate(String lectureName, Student student) {
@@ -95,6 +100,7 @@ public class AcademyProjectService {
 	
 	//강의 삭제
 	public boolean lectureDelete(String lectureName) {
+		
 		Lecture lecture = null;
 		int count = lectureList.size();
 		
@@ -109,7 +115,6 @@ public class AcademyProjectService {
 		return false;
 	}
 	
-	
 	//강의 이름으로 강사 출력
 	public Lecture getLectureTeacher(String lectureName) throws LectureNotFoundException {
 		for (Lecture l : lectureList) {
@@ -117,6 +122,7 @@ public class AcademyProjectService {
 				return l;
 			}
 		}
+		
 		return null;
 	}
 

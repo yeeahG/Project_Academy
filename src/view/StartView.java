@@ -9,7 +9,7 @@ import model.dto.Teacher;
 public class StartView {
 	public static void main(String[] args) {
 		
-		//강사 - 번호, 이름, 연락처, 이메일, 전공, 경력
+		//강사- 번호, 이름, 연락처, 이메일, 전공, 경력
 		Teacher teacher1 = new Teacher(1, "김종원", "010-1111-2222", "jongwon@playdata.com", "영어", 5);
 		Teacher teacher2 = new Teacher(2, "윤지원", "010-3333-2322", "jiwon@playdata.com", "중국어", 6);
 		Teacher teacher3 = new Teacher(3, "김예지", "010-9877-6544", "yeji@playdata.com", "일본어", 3);
@@ -40,7 +40,7 @@ public class StartView {
 		
 		AcademyProjectController controller = AcademyProjectController.getInstance();
 		
-		System.out.println("----강의 개설----");
+		System.out.println("----수업 개설----");
 		controller.lectureInsert(toeicTest);
 		controller.lectureInsert(hskTest);
 		controller.lectureInsert(jlptN2Test);
@@ -57,7 +57,7 @@ public class StartView {
 		controller.getLecture("05flex일본어");		
 		
 		//05flex일본어강사 정보 출력
-		System.out.println("\n----05flex일본어 강사정보 출력----");
+		System.out.println("\n----05flex일본어 강사정보----");
 		controller.getLectureTeacher("05flex일본어");		
 		
 				
@@ -73,15 +73,19 @@ public class StartView {
 		
 		//04TOEFL 주5일 고급특강 개강날짜 변경
 		System.out.println("\n----04TOEFL 주5일 고급특강 개강날짜 변경----");
-		controller.lectureDateUpdate("04TOEFL 주5일 고급특강", "2022-02-01");
-		
+		controller.lectureDateUpdate(null, "2022-02-01");
+		controller.lectureDateUpdate("04TOEFL 주5일 고급특강", null);
+		controller.lectureDateUpdate("04TOEFL 주5일 고급특강", "2022-02-01");		
 
+		
 		//04TOEFL 주5일 고급특강 강사 정보 변경
 		System.out.println("\n---04TOEFL 주5일 고급특강 수업 강사 변경----");
+		controller.lectureTeacherUpdate(null, teacher2);
+		controller.lectureTeacherUpdate("04TOEFL 주5일 고급특강", null);
 		controller.lectureTeacherUpdate("04TOEFL 주5일 고급특강", teacher2);
 		
 		
-		//수강생 변경
+		//04TOEFL 주5일 고급특강 수강생 변경
 		System.out.println("\n----04TOEFL 주5일 고급특강 수강생 변경----");
 		controller.letcutreStudentUpdate("04TOEFL 주5일 고급특강", student7);
 		
@@ -89,6 +93,10 @@ public class StartView {
 		//04TOEFL 주5일 고급특강 삭제
 		System.out.println("\n----04TOEFL 주5일 고급특강 폐강-----");
 		controller.lectureDelete("04TOEFL 주5일 고급특강");
+		controller.getLecture("04TOEFL 주5일 고급특강");
+		controller.lectureDelete(null);
+		
+		System.out.println("\n---재입력----");
 		controller.getLecture("04TOEFL 주5일 고급특강");
 		
 		
